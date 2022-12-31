@@ -1,0 +1,22 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: balancereader
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/frontend
+        - cluster.local/ns/bankofanthos/sa/ledgerwriter
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /balances/*
+        ports:
+        - "8080"
+  selector:
+    matchLabels:
+      app: balancereader

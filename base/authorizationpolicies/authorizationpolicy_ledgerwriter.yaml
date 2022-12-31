@@ -1,0 +1,22 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ledgerwriter
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/frontend
+    to:
+    - operation:
+        methods:
+        - POST
+        paths:
+        - /transactions
+        - /transactions/*
+        ports:
+        - "8080"
+  selector:
+    matchLabels:
+      app: ledgerwriter

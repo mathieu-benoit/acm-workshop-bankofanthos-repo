@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ledger-db
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/balancereader
+        - cluster.local/ns/bankofanthos/sa/transactionhistory
+        - cluster.local/ns/bankofanthos/sa/ledgerwriter
+    to:
+    - operation:
+        ports:
+        - "5432"
+  selector:
+    matchLabels:
+      app: ledger-db

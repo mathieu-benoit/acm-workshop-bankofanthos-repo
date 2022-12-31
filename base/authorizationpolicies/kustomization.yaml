@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- authorizationpolicy_accounts-db.yaml
+- authorizationpolicy_balancereader.yaml
+- authorizationpolicy_contacts.yaml
+- authorizationpolicy_frontend.yaml
+- authorizationpolicy_ledger-db.yaml
+- authorizationpolicy_ledgerwriter.yaml
+- authorizationpolicy_transactionhistory.yaml
+- authorizationpolicy_userservice.yaml

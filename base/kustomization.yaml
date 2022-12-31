@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../upstream
 - virtualservice.yaml
+- authorizationpolicies
 patchesJson6902:
 - patch: |-
     - op: replace
@@ -11,3 +12,5 @@ patchesJson6902:
   target:
     kind: Service
     name: frontend
+components:
+- serviceaccounts

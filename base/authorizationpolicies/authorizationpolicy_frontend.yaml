@@ -1,0 +1,21 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/loadgenerator
+        - cluster.local/ns/asm-ingress/sa/asm-ingressgateway
+    to:
+    - operation:
+        methods:
+        - GET
+        - POST
+        ports:
+        - "8080"
+  selector:
+    matchLabels:
+      app: frontend

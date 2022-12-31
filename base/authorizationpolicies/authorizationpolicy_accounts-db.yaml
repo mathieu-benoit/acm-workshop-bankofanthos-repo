@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: accounts-db
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/contacts
+        - cluster.local/ns/bankofanthos/sa/userservice
+    to:
+    - operation:
+        ports:
+        - "5432"
+  selector:
+    matchLabels:
+      app: accounts-db

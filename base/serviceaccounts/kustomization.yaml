@@ -1,0 +1,76 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- serviceaccount_accounts-db.yaml
+- serviceaccount_balancereader.yaml
+- serviceaccount_contacts.yaml
+- serviceaccount_frontend.yaml
+- serviceaccount_ledger-db.yaml
+- serviceaccount_ledgerwriter.yaml
+- serviceaccount_loadgenerator.yaml
+- serviceaccount_transactionhistory.yaml
+- serviceaccount_userservice.yaml
+patchesJson6902:
+- target:
+    kind: StatefulSet
+    name: accounts-db
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: accounts-db
+- target:
+    kind: Deployment
+    name: balancereader
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: balancereader
+- target:
+    kind: Deployment
+    name: contacts
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: contacts
+- target:
+    kind: Deployment
+    name: frontend
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: frontend
+- target:
+    kind: StatefulSet
+    name: ledger-db
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: ledger-db
+- target:
+    kind: Deployment
+    name: ledgerwriter
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: ledgerwriter
+- target:
+    kind: Deployment
+    name: loadgenerator
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: loadgenerator
+- target:
+    kind: Deployment
+    name: transactionhistory
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: transactionhistory
+- target:
+    kind: Deployment
+    name: userservice
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/serviceAccountName
+      value: userservice

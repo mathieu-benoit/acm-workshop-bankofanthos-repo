@@ -1,0 +1,23 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: userservice
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/frontend
+    to:
+    - operation:
+        methods:
+        - GET
+        - POST
+        paths:
+        - /users
+        - /login
+        ports:
+        - "8080"
+  selector:
+    matchLabels:
+      app: userservice

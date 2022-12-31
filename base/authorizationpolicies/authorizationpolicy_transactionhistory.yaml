@@ -1,0 +1,21 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: transactionhistory
+spec:
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/bankofanthos/sa/frontend
+    to:
+    - operation:
+        methods:
+        - GET
+        paths:
+        - /transactions/*
+        ports:
+        - "8080"
+  selector:
+    matchLabels:
+      app: transactionhistory
