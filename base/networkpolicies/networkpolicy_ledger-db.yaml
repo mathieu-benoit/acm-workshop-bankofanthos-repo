@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ledger-db
+spec:
+  egress:
+  - {}
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ledgerwriter
+    - podSelector:
+        matchLabels:
+          app: balancereader
+    - podSelector:
+        matchLabels:
+          app: transactionhistory
+    ports:
+    - port: 5432
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: ledger-db
+  policyTypes:
+  - Ingress
+  - Egress

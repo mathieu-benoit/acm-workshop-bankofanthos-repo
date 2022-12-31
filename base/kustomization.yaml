@@ -4,6 +4,7 @@ resources:
 - ../upstream
 - virtualservice.yaml
 - authorizationpolicies
+- networkpolicies
 patchesJson6902:
 - patch: |-
     - op: replace

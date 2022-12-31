@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- networkpolicy_accounts-db.yaml
+- networkpolicy_balancereader.yaml
+- networkpolicy_contacts.yaml
+- networkpolicy_deny-all.yaml
+- networkpolicy_frontend.yaml
+- networkpolicy_ledger-db.yaml
+- networkpolicy_ledgerwriter.yaml
+- networkpolicy_loadgenerator.yaml
+- networkpolicy_transactionhistory.yaml
+- networkpolicy_userservice.yaml
