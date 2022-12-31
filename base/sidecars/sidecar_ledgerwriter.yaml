@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: ledgerwriter
+spec:
+  egress:
+  - hosts:
+    - istio-system/*
+    - ./balancereader.bankofanthos.svc.cluster.local
+    - ./ledger-db.bankofanthos.svc.cluster.local
+  workloadSelector:
+    labels:
+      app: ledgerwriter

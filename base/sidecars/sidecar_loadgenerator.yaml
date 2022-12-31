@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: loadgenerator
+spec:
+  egress:
+  - hosts:
+    - istio-system/*
+    - ./frontend.bankofanthos.svc.cluster.local
+  workloadSelector:
+    labels:
+      app: loadgenerator

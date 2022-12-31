@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: balancereader
+spec:
+  egress:
+  - hosts:
+    - istio-system/*
+    - ./ledger-db.bankofanthos.svc.cluster.local
+  workloadSelector:
+    labels:
+      app: balancereader

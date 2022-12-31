@@ -5,6 +5,7 @@ resources:
 - virtualservice.yaml
 - authorizationpolicies
 - networkpolicies
+- sidecars
 patchesJson6902:
 - patch: |-
     - op: replace
