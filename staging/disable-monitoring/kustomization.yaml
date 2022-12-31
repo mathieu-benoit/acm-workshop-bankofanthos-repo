@@ -1,0 +1,87 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: balancereader
+  spec:
+    template:
+      spec:
+        containers:
+          - name: balancereader
+            env:
+            - name: ENABLE_TRACING
+              value: "false"
+            - name: ENABLE_METRICS
+              value: "false"
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: contacts
+  spec:
+    template:
+      spec:
+        containers:
+          - name: contacts
+            env:
+            - name: ENABLE_TRACING
+              value: "false"
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: frontend
+  spec:
+    template:
+      spec:
+        containers:
+          - name: frontend
+            env:
+            - name: ENABLE_TRACING
+              value: "false"
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: ledgerwriter
+  spec:
+    template:
+      spec:
+        containers:
+          - name: ledgerwriter
+            env:
+            - name: ENABLE_TRACING
+              value: "false"
+            - name: ENABLE_METRICS
+              value: "false"
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: transactionhistory
+  spec:
+    template:
+      spec:
+        containers:
+          - name: transactionhistory
+            env:
+            - name: ENABLE_TRACING
+              value: "false"
+            - name: ENABLE_METRICS
+              value: "false"
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: userservice
+  spec:
+    template:
+      spec:
+        containers:
+          - name: userservice
+            env:
+            - name: ENABLE_TRACING
+              value: "false"

@@ -1,0 +1,66 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+patchesJson6902:
+- target:
+    kind: StatefulSet
+    name: accounts-db
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/accounts-db:v0.5.10
+- target:
+    kind: Deployment
+    name: balancereader
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/balancereader:v0.5.10
+- target:
+    kind: Deployment
+    name: contacts
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/contacts:v0.5.10
+- target:
+    kind: Deployment
+    name: frontend
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/frontend:v0.5.10
+- target:
+    kind: StatefulSet
+    name: ledger-db
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/ledger-db:v0.5.10
+- target:
+    kind: Deployment
+    name: ledgerwriter
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/ledgerwriter:v0.5.10
+- target:
+    kind: Deployment
+    name: loadgenerator
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/loadgenerator:v0.5.10
+- target:
+    kind: Deployment
+    name: transactionhistory
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/transactionhistory:v0.5.10
+- target:
+    kind: Deployment
+    name: userservice
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: northamerica-northeast1-docker.pkg.dev/acm-workshop-618-tenant/containers/bankofanthos/userservice:v0.5.10
