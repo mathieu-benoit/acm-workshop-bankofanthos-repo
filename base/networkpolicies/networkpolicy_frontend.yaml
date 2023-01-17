@@ -12,7 +12,7 @@ spec:
           app: loadgenerator
     - namespaceSelector:
         matchLabels:
-          name: asm-ingress
+          kubernetes.io/metadata.name: asm-ingress
       podSelector:
         matchLabels:
           app: asm-ingressgateway
